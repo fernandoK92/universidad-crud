@@ -1,0 +1,16 @@
+import { ApiProperty } from '@nestjs/swagger';
+
+export class CreateDocenteDto {
+  @ApiProperty({ description: 'Nombre del docente', example: 'Juan Pérez' })
+  nombre: string;
+
+  @ApiProperty({ description: 'ID de la carrera que dicta el docente', example: 1 })
+  carreraId: number; // ID de la carrera que dicta el docente
+
+  @ApiProperty({
+    description: 'IDs de las materias que dicta el docente',
+    example: [1, 2],
+    type: [Number],
+  })
+  materiasIds: number[]; // IDs de las materias que dicta el docente
+}
