@@ -11,27 +11,27 @@ datasource db {
 model Carrera {
   id             Int            @id @default(autoincrement())
   nombre         String
-  estudiantes    Estudiante[]    // Relación con estudiantes
-  docentesCarrera DocenteCarrera[] // Relación con docentes
-  materias       Materia[]       @relation("CarreraMaterias") // Relación con materias
-  registros      Registro[]      // Relación con registros
+  estudiantes    Estudiante[]    
+  docentesCarrera DocenteCarrera[] 
+  materias       Materia[]       @relation("CarreraMaterias") 
+  registros      Registro[]      
 }
 
 model Materia {
   id             Int             @id @default(autoincrement())
   nombre         String
-  registros      Registro[]      // Relaciona materias con carreras
-  inscripciones  Inscripcion[]   // Relaciona materias con estudiantes
-  dictan         Dictan[]        // Relaciona materias con docentes
-  carreras       Carrera[]       @relation("CarreraMaterias") // Relación inversa con carreras
+  registros      Registro[]      
+  inscripciones  Inscripcion[]   
+  dictan         Dictan[]        
+  carreras       Carrera[]       @relation("CarreraMaterias") 
 }
 
 model Estudiante {
   id             Int             @id @default(autoincrement())
   nombre         String
-  carreraId      Int             // Relación con carrera
+  carreraId      Int             
   carrera        Carrera         @relation(fields: [carreraId], references: [id])
-  inscripciones  Inscripcion[]   // Relación con inscripciones
+  inscripciones  Inscripcion[]   
 }
 
 model Docente {

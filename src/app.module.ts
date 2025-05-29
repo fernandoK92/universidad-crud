@@ -7,6 +7,7 @@ import { DocentesModule } from './docentes/docentes.module';
 import { ConsultasModule } from './consultas/consultas.module';
 import { PrismaModule } from './prisma/prisma.module'; // Importa PrismaModule
 import { CarrerasModule } from './carreras/carreras.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -15,7 +16,8 @@ import { CarrerasModule } from './carreras/carreras.module';
     DocentesModule,
     ConsultasModule,
     PrismaModule,
-    CarrerasModule, // Asegúrate de importar PrismaModule
+    CarrerasModule,
+    AuthModule, // Asegúrate de importar PrismaModule
   ],
   controllers: [AppController],
   providers: [AppService], // Elimina PrismaService de aquí

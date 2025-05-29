@@ -5,12 +5,12 @@ export class CreateDocenteDto {
   nombre: string;
 
   @ApiProperty({ description: 'ID de la carrera que dicta el docente', example: 1 })
-  carreraId: number; // ID de la carrera que dicta el docente
+  carreraId: number; 
 
   @ApiProperty({
     description: 'IDs de las materias que dicta el docente',
     example: [1, 2],
     type: [Number],
   })
-  materiasIds: number[]; // IDs de las materias que dicta el docente
+  materiasIds: number[]; 
 }
