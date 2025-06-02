@@ -8,6 +8,12 @@ import { ConsultasModule } from './consultas/consultas.module';
 import { PrismaModule } from './prisma/prisma.module'; // Importa PrismaModule
 import { CarrerasModule } from './carreras/carreras.module';
 import { AuthModule } from './auth/auth.module';
+import { UsuariosService } from './usuarios/usuarios.service';
+import { UsuariosController } from './usuarios/usuarios.controller';
+import { RolesService } from './roles/roles.service';
+import { RolesController } from './roles/roles.controller';
+import { PermisosService } from './permisos/permisos.service';
+import { PermisosController } from './permisos/permisos.controller';
 
 @Module({
   imports: [
@@ -19,7 +25,7 @@ import { AuthModule } from './auth/auth.module';
     CarrerasModule,
     AuthModule, // Asegúrate de importar PrismaModule
   ],
-  controllers: [AppController],
-  providers: [AppService], // Elimina PrismaService de aquí
+  controllers: [AppController, UsuariosController, RolesController, PermisosController],
+  providers: [AppService, UsuariosService, RolesService, PermisosService], // Elimina PrismaService de aquí
 })
 export class AppModule {}

@@ -162,6 +162,34 @@ exports.Prisma.DocenteCarreraScalarFieldEnum = {
   carreraId: 'carreraId'
 };
 
+exports.Prisma.UsuarioScalarFieldEnum = {
+  id: 'id',
+  username: 'username',
+  password: 'password'
+};
+
+exports.Prisma.RolScalarFieldEnum = {
+  id: 'id',
+  nombre: 'nombre'
+};
+
+exports.Prisma.PermisoScalarFieldEnum = {
+  id: 'id',
+  nombre: 'nombre'
+};
+
+exports.Prisma.UsuarioRolScalarFieldEnum = {
+  id: 'id',
+  usuarioId: 'usuarioId',
+  rolId: 'rolId'
+};
+
+exports.Prisma.RolPermisoScalarFieldEnum = {
+  id: 'id',
+  rolId: 'rolId',
+  permisoId: 'permisoId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -181,7 +209,12 @@ exports.Prisma.ModelName = {
   Registro: 'Registro',
   Inscripcion: 'Inscripcion',
   Dictan: 'Dictan',
-  DocenteCarrera: 'DocenteCarrera'
+  DocenteCarrera: 'DocenteCarrera',
+  Usuario: 'Usuario',
+  Rol: 'Rol',
+  Permiso: 'Permiso',
+  UsuarioRol: 'UsuarioRol',
+  RolPermiso: 'RolPermiso'
 };
 
 /**

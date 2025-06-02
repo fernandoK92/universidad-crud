@@ -11,34 +11,34 @@ datasource db {
 model Carrera {
   id              Int              @id @default(autoincrement())
   nombre          String
-  estudiantes     Estudiante[] // Relación con estudiantes
-  docentesCarrera DocenteCarrera[] // Relación con docentes
-  materias        Materia[]        @relation("CarreraMaterias") // Relación con materias
-  registros       Registro[] // Relación con registros
+  estudiantes     Estudiante[]
+  docentesCarrera DocenteCarrera[]
+  materias        Materia[]        @relation("CarreraMaterias")
+  registros       Registro[]
 }
 
 model Materia {
   id            Int           @id @default(autoincrement())
   nombre        String
-  registros     Registro[] // Relaciona materias con carreras
-  inscripciones Inscripcion[] // Relaciona materias con estudiantes
-  dictan        Dictan[] // Relaciona materias con docentes
-  carreras      Carrera[]     @relation("CarreraMaterias") // Relación inversa con carreras
+  registros     Registro[]
+  inscripciones Inscripcion[]
+  dictan        Dictan[]
+  carreras      Carrera[]     @relation("CarreraMaterias")
 }
 
 model Estudiante {
   id            Int           @id @default(autoincrement())
   nombre        String
-  carreraId     Int // Relación con carrera
+  carreraId     Int
   carrera       Carrera       @relation(fields: [carreraId], references: [id])
-  inscripciones Inscripcion[] // Relación con inscripciones
+  inscripciones Inscripcion[]
 }
 
 model Docente {
   id              Int              @id @default(autoincrement())
   nombre          String
-  dictan          Dictan[] // Relación con materias que dicta
-  docentesCarrera DocenteCarrera[] // Relación con carreras
+  dictan          Dictan[]
+  docentesCarrera DocenteCarrera[]
 }
 
 model Registro {
@@ -71,4 +71,42 @@ model DocenteCarrera {
   carreraId Int
   docente   Docente @relation(fields: [docenteId], references: [id])
   carrera   Carrera @relation(fields: [carreraId], references: [id])
+}
+
+// ...tu schema actual...
+
+model Usuario {
+  id       Int          @id @default(autoincrement())
+  username String       @unique
+  password String
+  roles    UsuarioRol[]
+}
+
+model Rol {
+  id       Int          @id @default(autoincrement())
+  nombre   String       @unique
+  permisos RolPermiso[]
+  usuarios UsuarioRol[]
+}
+
+model Permiso {
+  id     Int          @id @default(autoincrement())
+  nombre String       @unique
+  roles  RolPermiso[]
+}
+
+model UsuarioRol {
+  id        Int     @id @default(autoincrement())
+  usuario   Usuario @relation(fields: [usuarioId], references: [id])
+  usuarioId Int
+  rol       Rol     @relation(fields: [rolId], references: [id])
+  rolId     Int
+}
+
+model RolPermiso {
+  id        Int     @id @default(autoincrement())
+  rol       Rol     @relation(fields: [rolId], references: [id])
+  rolId     Int
+  permiso   Permiso @relation(fields: [permisoId], references: [id])
+  permisoId Int
 }

@@ -24,4 +24,5 @@ export class CarrerasService {
   remove(id: number) {
     return this.prisma.carrera.delete({ where: { id } });
   }
+  
 }
