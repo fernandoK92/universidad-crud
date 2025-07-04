@@ -23,7 +23,7 @@ import { PermisosController } from './permisos/permisos.controller';
     ConsultasModule,
     PrismaModule,
     CarrerasModule,
-    AuthModule, // Asegúrate de importar PrismaModule
+    AuthModule, 
   ],
   controllers: [AppController, UsuariosController, RolesController, PermisosController],
   providers: [AppService, UsuariosService, RolesService, PermisosService], // Elimina PrismaService de aquí
