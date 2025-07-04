@@ -1,5 +1,8 @@
 [build]
-command = "npm install && npx prisma generate && npm run build"
+command = "npm ci && npx prisma generate && npm run build"
 
 [deploy]
 command = "npx prisma migrate deploy && npm run start:prod"
+
+[restart]
+command = "npm run start:prod"

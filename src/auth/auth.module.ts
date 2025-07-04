@@ -7,7 +7,7 @@ import { PrismaModule } from '../prisma/prisma.module'; // <-- AGREGA ESTA LÍNE
 @Module({
   imports: [
     JwtModule.register({
-      secret: 'supersecreto',
+      secret: process.env.JWT_SECRET || 'fallback-secret-key',
       signOptions: { expiresIn: '1h' },
     }),
     PrismaModule, 
